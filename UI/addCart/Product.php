@@ -6,24 +6,24 @@ class Product
     public $productArray = array(
         "3DcAM01" => array(
             'id' => '1',
-            'name' => '3D Camera',
-            'code' => '3DcAM01',
-            'image' => 'product-images/camera.jpg',
-            'price' => '1500.00'
+            'name' => 'Burger',
+            'code' => '3',
+            'image' => 'product-images/burger.jpg',
+            'price' => '5.00'
         ),
         "USB02" => array(
             'id' => '2',
-            'name' => 'External Hard Drive',
+            'name' => 'Coke'
             'code' => 'USB02',
-            'image' => 'product-images/external-hard-drive.jpg',
-            'price' => '800.00'
+            'image' => 'product-images/drinks.jpg',
+            'price' => '8.00'
         ),
         "wristWear03" => array(
             'id' => '3',
-            'name' => 'Wrist Watch',
-            'code' => 'wristWear03',
-            'image' => 'product-images/watch.jpg',
-            'price' => '300.00'
+            'name' => 'Fries'
+            'code' => 'Fries'
+            'image' => 'product-images/fries.jpg',
+            'price' => '3.00'
         )
     );
 
