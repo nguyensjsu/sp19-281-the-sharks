@@ -14,16 +14,16 @@ class Product
         "USB02" => array(
             'id' => '2',
             'name' => 'Coke'
-            'code' => 'USB02',
+            'code' => 'Coke',
             'image' => 'product-images/drinks.jpg',
-            'price' => '8.00'
+            'price' => '1.00'
         ),
         "wristWear03" => array(
             'id' => '3',
             'name' => 'Fries'
             'code' => 'Fries'
             'image' => 'product-images/fries.jpg',
-            'price' => '3.00'
+            'price' => '2.00'
         )
     );
 
