@@ -7,7 +7,7 @@ session_start();
 <link href="style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-<h1>Demo Shopping Cart without Database</h1>
+<h1>Demo Shopping</h1>
 <?php 
 require_once "product-gallery.php";
 ?>

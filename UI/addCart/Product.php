@@ -7,23 +7,23 @@ class Product
         "3DcAM01" => array(
             'id' => '1',
             'name' => 'Burger',
-            'code' => '3',
-            'image' => 'product-images/burger.jpg',
-            'price' => '5.00'
+            'code' => '3DcAM01',
+            'image' => 'product-images/burger.jpeg',
+            'price' => '10.00'
         ),
         "USB02" => array(
             'id' => '2',
-            'name' => 'Coke'
-            'code' => 'Coke',
-            'image' => 'product-images/drinks.jpg',
-            'price' => '1.00'
+            'name' => 'Coke',
+            'code' => 'USB02',
+            'image' => 'product-images/coke.jpg',
+            'price' => '2.00'
         ),
         "wristWear03" => array(
             'id' => '3',
-            'name' => 'Fries'
-            'code' => 'Fries'
-            'image' => 'product-images/fries.jpg',
-            'price' => '2.00'
+            'name' => 'Fries',
+            'code' => 'wristWear03',
+            'image' => 'product-images/fries.jpeg',
+            'price' => '5.00'
         )
     );
 
