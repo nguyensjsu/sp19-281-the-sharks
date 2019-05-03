@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,11 +11,10 @@ body {font-family: Mclawsuit  ;}
 #login_header{color: white  ;
      background-image: url(burger_texture.jpg);
      background-position: left top;
-     background-size:300px 300px ; 
+     background-size:400px 350px ; 
      background-repeat: repeat;
      padding: 25px; 
     }
-
 
 .input-container {
   display: -ms-flexbox; /* IE10 */
@@ -72,47 +72,7 @@ background-color: dodgerblue;
  opacity: 1;
 }
 </style>
-<!--
-<?php
 
-seesion_start();
-if (isset($_POST['submit'])) 
-{
-  $email=$_POST['email'];
-  $password=$_POST['password'];
-  if ($password!= $password || $email!= email)
-   {
-    echo "email or password is incorrect";
-    }
-
-  else{
-        $_SESSION["loggedin"]=$email;
-      header("Location:loginpage.php");
-  }  
-}
-?>  
--->
-	
-  <?php
-            session_start();
-
-            $email="";
-            $password="";
-
-            if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true)
-            {
-                header("Location: rest_pin.php");
-            }
-
-            if(isset($_POST['email'])&& isset($_POST['password']))
-            {
-                if($_POST['email']==$email && $_POST['password']==$password)
-                {
-                    $_SESSION['loggedin']='true';
-                    header("Location: rest_pin.php");
-                }
-            }
-  ?>
 
 </head>
 
