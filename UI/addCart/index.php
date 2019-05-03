@@ -8,6 +8,8 @@ session_start();
 </head>
 <body>
 <h1>Demo Shopping</h1>
+
+
 <?php 
 require_once "product-gallery.php";
 ?>
@@ -18,8 +20,26 @@ require_once "product-gallery.php";
 <?php 
 require_once "ajax-action.php";
 ?>
+
+
+
 </div>
 </div>
+
+
+
+<form method="post" action="payment.php" name="loginform" style="max-width:500px; margin:auto">
+
+<div>
+  <center><h2>Payment</h2></center>
+</div>
+
+  <button type="submit" class="btn"><h4>Payment</h4></button><br>
+</form>
+
+
+
+
 <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
 <script>
 function cartAction(action, product_code) {
