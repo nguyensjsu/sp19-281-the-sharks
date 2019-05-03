@@ -73,6 +73,64 @@ background-color: dodgerblue;
  opacity: 1;
 }
 </style>
+
+
+<?php
+
+function callAPI($method, $url, $data) {
+  //echo $data;
+  $curl = curl_init();
+  //echo $data;
+   switch ($method){
+      case "POST":
+         curl_setopt($curl, CURLOPT_POST, 1);
+         if ($data)
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+         break;
+      case "PUT":
+         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+         if ($data)
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);                
+         break;
+      default:
+         if ($data)
+            $url = sprintf("%s?%s", $url, http_build_query($data));
+   }
+
+   // OPTIONS:
+   curl_setopt($curl, CURLOPT_URL, $url);
+   curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+      'APIKEY: 111111111111111111111',
+      'Content-Type: application/json',
+   ));
+   curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+   curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+
+   // EXECUTE:
+   $result = curl_exec($curl);
+   if(!$result){die("Connection Failure");}
+   curl_close($curl);
+   return $result;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name= $_POST['name'];
+  $address=$_POST['address'];
+  $pincode=$_POST['pincode'];
+  $email = $_POST['email'];
+  $password=$_POST['password'];
+  $data = callAPI("POST",'http://cmpe281-327234648.us-east-1.elb.amazonaws.com/users/signup',json_encode(array('name'=> $name,'address'=>$address,'pincode'=>pincode,'email'=>$email,'password'=>$password)));
+  echo "You are registered now!";
+  //echo $data;
+  $data = json_decode($data, true);
+  echo $data['message'];
+  if($data['message']=="Login Failed"){
+      header("Location: loginpage.php");
+ }
+}
+
+?>
+
 </head>
 
 <body>
@@ -84,7 +142,7 @@ background-color: dodgerblue;
  </div>
 <br>
 
-<form method="post" action="registered.php" name="registerform" style="max-width:500px;margin:auto">
+<form method="post" action="registerpage.php" name="registerform" style="max-width:500px;margin:auto">
 
 <div>
 	<center><h2>Register</h2></center>
@@ -92,7 +150,7 @@ background-color: dodgerblue;
 
  <div class="input-container">
     <i class="fa fa-user icon"></i>
-    <input class="input-field" type="text" value="<?php echo $name; ?>" placeholder="Name" name="nm">
+    <input class="input-field" type="text" value="<?php echo $name; ?>" placeholder="Name" name="name">
   </div>
 
 <div class="input-container">
