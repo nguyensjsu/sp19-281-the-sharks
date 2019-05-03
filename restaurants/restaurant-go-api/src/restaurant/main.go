@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gorilla/mux"
 	uuid "github.com/satori/go.uuid"
@@ -19,6 +20,14 @@ var mongodb_collection = os.Getenv("COLLECTION")
 var mongo_admin_database = os.Getenv("ADMIN_DATABASE")
 var mongo_username = os.Getenv("USERNAME")
 var mongo_password = os.Getenv("PASSWORD")
+
+func init() {
+	fmt.Println("Mongo Server: ", mongodb_server)
+	fmt.Println("Mongo DB :", mongodb_database)
+	fmt.Println("Mongo Collection:", mongodb_collection)
+	fmt.Println("Mongo User:", mongo_username)
+
+}
 
 func pingHandler(w http.ResponseWriter, req *http.Request) {
 	mapD := map[string]string{"message": "API Working"}
@@ -45,7 +54,15 @@ Handler method for getting all restaurants based on a ziplocation
 */
 func getRestaurantHandler(w http.ResponseWriter, req *http.Request) {
 
-	session, err := mgo.Dial(mongodb_server)
+	info := &mgo.DialInfo{
+		Addrs:    []string{mongodb_server},
+		Timeout:  60 * time.Second,
+		Database: mongodb_database,
+		Username: mongo_username,
+		Password: mongo_password,
+	}
+
+	session, err := mgo.DialWithInfo(info)
 	if err != nil {
 		panic(err)
 		ErrorWithJSON(w, "Could not connect to database", http.StatusInternalServerError)
@@ -80,7 +97,15 @@ func getRestaurantHandler(w http.ResponseWriter, req *http.Request) {
 Handler to get all restaurant
 */
 func getAllRestaurantHandler(w http.ResponseWriter, req *http.Request) {
-	session, err := mgo.Dial(mongodb_server)
+	info := &mgo.DialInfo{
+		Addrs:    []string{mongodb_server},
+		Timeout:  60 * time.Second,
+		Database: mongodb_database,
+		Username: mongo_username,
+		Password: mongo_password,
+	}
+
+	session, err := mgo.DialWithInfo(info)
 	if err != nil {
 		panic(err)
 		ErrorWithJSON(w, "Could not connect to database", http.StatusInternalServerError)
@@ -110,7 +135,15 @@ func getAllRestaurantHandler(w http.ResponseWriter, req *http.Request) {
 func addRestaurantHandler(w http.ResponseWriter, req *http.Request) {
 
 	uuidForRestaurant, _ := uuid.NewV4()
-	session, err := mgo.Dial(mongodb_server)
+	info := &mgo.DialInfo{
+		Addrs:    []string{mongodb_server},
+		Timeout:  60 * time.Second,
+		Database: mongodb_database,
+		Username: mongo_username,
+		Password: mongo_password,
+	}
+
+	session, err := mgo.DialWithInfo(info)
 	if err != nil {
 		panic(err)
 		ErrorWithJSON(w, "Could not connect to database", http.StatusInternalServerError)
@@ -142,7 +175,15 @@ func addRestaurantHandler(w http.ResponseWriter, req *http.Request) {
 Handler method for getting restaurant based on a Id
 */
 func getRestaurantByIDHandler(w http.ResponseWriter, req *http.Request) {
-	session, err := mgo.Dial(mongodb_server)
+	info := &mgo.DialInfo{
+		Addrs:    []string{mongodb_server},
+		Timeout:  60 * time.Second,
+		Database: mongodb_database,
+		Username: mongo_username,
+		Password: mongo_password,
+	}
+
+	session, err := mgo.DialWithInfo(info)
 	if err != nil {
 		panic(err)
 		ErrorWithJSON(w, "Could not connect to database", http.StatusInternalServerError)
@@ -174,7 +215,15 @@ func getRestaurantByIDHandler(w http.ResponseWriter, req *http.Request) {
 }
 func deleteRestaurantHandler(w http.ResponseWriter, req *http.Request) {
 
-	session, err := mgo.Dial(mongodb_server)
+	info := &mgo.DialInfo{
+		Addrs:    []string{mongodb_server},
+		Timeout:  60 * time.Second,
+		Database: mongodb_database,
+		Username: mongo_username,
+		Password: mongo_password,
+	}
+
+	session, err := mgo.DialWithInfo(info)
 	if err != nil {
 		panic(err)
 		ErrorWithJSON(w, "Could not connect to database", http.StatusInternalServerError)
