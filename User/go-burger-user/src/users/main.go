@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gorilla/mux"
 	uuid "github.com/satori/go.uuid"
@@ -20,19 +21,27 @@ var mongo_admin_database = os.Getenv("ADMIN_DATABASE")
 var mongo_username = os.Getenv("USERNAME")
 var mongo_password = os.Getenv("PASSWORD")
 
-func testUserAPI(w http.ResponseWriter, req *http.Request) {
-	respBody, err := json.MarshalIndent("API working", "", "  ")
-	if err != nil {
-		log.Fatal(err)
-	}
-	ResponseWithJSON(w, respBody, http.StatusOK)
+func init() {
+	fmt.Println("Mongo Server: ", mongodb_server)
+	fmt.Println("Mongo DB :", mongodb_database)
+	fmt.Println("Mongo Collection:", mongodb_collection)
+	fmt.Println("Mongo User:", mongo_username)
+
+}
+
+func pingHandler(w http.ResponseWriter, req *http.Request) {
+	log.Print("hello")
+	mapD := map[string]string{"message": "API Working"}
+	mapB, _ := json.Marshal(mapD)
+	ResponseWithJSON(w, mapB, http.StatusOK)
 	return
 }
 
 func ErrorWithJSON(w http.ResponseWriter, message string, code int) {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	w.WriteHeader(code)
-	fmt.Fprintf(w, "{message: %q}", message)
+	mapD := map[string]string{"message": message}
+	mapB, _ := json.Marshal(mapD)
+	ResponseWithJSON(w, mapB, code)
 }
 
 func ResponseWithJSON(w http.ResponseWriter, json []byte, code int) {
@@ -44,7 +53,15 @@ func ResponseWithJSON(w http.ResponseWriter, json []byte, code int) {
 func GetAllUser(w http.ResponseWriter, req *http.Request) {
 
 	fmt.Println("in get all user")
-	session, err := mgo.Dial(mongodb_server)
+	info := &mgo.DialInfo{
+		Addrs:    []string{mongodb_server},
+		Timeout:  60 * time.Second,
+		Database: mongodb_database,
+		Username: mongo_username,
+		Password: mongo_password,
+	}
+
+	session, err := mgo.DialWithInfo(info)
 	if err != nil {
 		panic(err)
 		ErrorWithJSON(w, "Could not connect to database", http.StatusInternalServerError)
@@ -75,7 +92,15 @@ func GetUserById(w http.ResponseWriter, req *http.Request) {
 	params := mux.Vars(req)
 	var userData User
 	_ = json.NewDecoder(req.Body).Decode(&userData)
-	session, err := mgo.Dial(mongodb_server)
+	info := &mgo.DialInfo{
+		Addrs:    []string{mongodb_server},
+		Timeout:  60 * time.Second,
+		Database: mongodb_database,
+		Username: mongo_username,
+		Password: mongo_password,
+	}
+
+	session, err := mgo.DialWithInfo(info)
 	if err != nil {
 		panic(err)
 		ErrorWithJSON(w, "Could not connect to database", http.StatusInternalServerError)
@@ -89,8 +114,7 @@ func GetUserById(w http.ResponseWriter, req *http.Request) {
 	var user User
 	err1 := c.Find(bson.M{"id": params["id"]}).One(&user)
 	if err1 != nil {
-		ErrorWithJSON(w, "Database error", http.StatusInternalServerError)
-		log.Println("Failed find book: ", err1)
+		ErrorWithJSON(w, "User not found", http.StatusNotFound)
 		return
 	}
 
@@ -112,10 +136,17 @@ func RegisterUser(w http.ResponseWriter, req *http.Request) {
 	_ = json.NewDecoder(req.Body).Decode(&user)
 	unqueId := uuid.Must(uuid.NewV4())
 	user.Id = unqueId.String()
-	session, err := mgo.Dial(mongodb_server)
+	info := &mgo.DialInfo{
+		Addrs:    []string{mongodb_server},
+		Timeout:  60 * time.Second,
+		Database: mongodb_database,
+		Username: mongo_username,
+		Password: mongo_password,
+	}
+
+	session, err := mgo.DialWithInfo(info)
 
 	if err != nil {
-		panic(err)
 		ErrorWithJSON(w, "Could not connect to database", http.StatusInternalServerError)
 		return
 	}
@@ -129,20 +160,25 @@ func RegisterUser(w http.ResponseWriter, req *http.Request) {
 			ErrorWithJSON(w, "User with this ID already exists", http.StatusBadRequest)
 			return
 		}
-
 		ErrorWithJSON(w, "Database error", http.StatusInternalServerError)
-		log.Println("Rgistration failed ", err)
 		return
 	}
 
 	respBody, err := json.MarshalIndent(user, "", "  ")
-
 	ResponseWithJSON(w, respBody, http.StatusOK)
 }
 
 func DeleteUser(w http.ResponseWriter, req *http.Request) {
 	params := mux.Vars(req)
-	session, err := mgo.Dial(mongodb_server)
+	info := &mgo.DialInfo{
+		Addrs:    []string{mongodb_server},
+		Timeout:  60 * time.Second,
+		Database: mongodb_database,
+		Username: mongo_username,
+		Password: mongo_password,
+	}
+
+	session, err := mgo.DialWithInfo(info)
 	if err != nil {
 		panic(err)
 		ErrorWithJSON(w, "Could not connect to database", http.StatusInternalServerError)
@@ -179,7 +215,15 @@ func DeleteUser(w http.ResponseWriter, req *http.Request) {
 func UserSignIn(w http.ResponseWriter, req *http.Request) {
 	var person User
 	_ = json.NewDecoder(req.Body).Decode(&person)
-	session, err := mgo.Dial(mongodb_server)
+	info := &mgo.DialInfo{
+		Addrs:    []string{mongodb_server},
+		Timeout:  60 * time.Second,
+		Database: mongodb_database,
+		Username: mongo_username,
+		Password: mongo_password,
+	}
+
+	session, err := mgo.DialWithInfo(info)
 	if err != nil {
 		panic(err)
 		ErrorWithJSON(w, "Could not connect to database", http.StatusInternalServerError)
@@ -194,7 +238,6 @@ func UserSignIn(w http.ResponseWriter, req *http.Request) {
 
 	err = c.Find(query).One(&user)
 	if err == mgo.ErrNotFound {
-
 		ErrorWithJSON(w, "Login Failed", http.StatusUnauthorized)
 		return
 	}
@@ -209,8 +252,9 @@ func UserSignIn(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
+	log.Print("hello")
 	router := mux.NewRouter()
-	router.HandleFunc("/users/ping", testUserAPI).Methods("GET")
+	router.HandleFunc("/users/ping", pingHandler).Methods("GET")
 	router.HandleFunc("/users", GetAllUser).Methods("GET")
 	router.HandleFunc("/users/{id}", GetUserById).Methods("GET")
 	router.HandleFunc("/users/signup", RegisterUser).Methods("POST")
