@@ -12,6 +12,8 @@
 ```
 Sarthak Sugandhi - User and Restaurant GOAPI
 Saumil Shah - Order and Cart GOAPI
+Mitesh Kumar - Payment API
+Deep Khajanchi - Menu API
 ```
 
 ## Agile Core Values
