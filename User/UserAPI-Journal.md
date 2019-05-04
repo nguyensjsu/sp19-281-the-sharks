@@ -2,9 +2,9 @@
 
 ## Steps for development of User API and setting it up on AWS using docker
 
-## Setup mongodb sharded cluster
+## Setup mongodb cluster
 ```
-Use shareded cluster from Personal project
+Create replica set of 3 mongodb cluster
 ```
 
 ## Write GO APIs for Users for - 
