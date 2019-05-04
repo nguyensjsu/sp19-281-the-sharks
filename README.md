@@ -41,4 +41,6 @@ Deep Khajanchi - Menu API
 
 ![Restaurant Menu](https://github.com/nguyensjsu/sp19-281-the-sharks/blob/master/Project%20Screenshots%20Deployment%20on%20Heroku/Menu_select.jpg)
 
+![Order](https://github.com/nguyensjsu/sp19-281-the-sharks/blob/master/Project%20Screenshots%20Deployment%20on%20Heroku/Order.jpg)
+
 ![Payment](https://github.com/nguyensjsu/sp19-281-the-sharks/blob/master/Project%20Screenshots%20Deployment%20on%20Heroku/payment.jpg)
