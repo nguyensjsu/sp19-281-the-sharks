@@ -81,6 +81,24 @@ Front end technology - Node.JS and React.JS
 2. Test full application
 3. Bug fixes
 ```
+# AKF Scale Cube
+
+### X-axis Scaling: 
+- Horizontal duplication or x-axis scaling is to create multiple instances or clones of your application on AWS behind a load balancer.
+
+- We have used auto scaling group based on CPU utilization and application load balancer..
+
+### Y-axis Scaling:
+- Y axis scaling or functional decomposition is to separate services or dissimilar things.
+
+- We have implemented this by making separate microservices for users, restaurant, menu, order and payment.
+
+### Z-axis Scaling:
+- Z axis scaling is to decompose or splitting similar data into different chunks.
+
+# Network Partition
+
+Mongodb with 2 replicas are used for implementation. According to CAP theorem, MongoDB is CP database. Hence, it provides consistent data. Mongo DB is partition tolerant system, as it updates database from nwtowrk recovery and elects a new master node in that case.
 
 # Architecture Diagram
 
