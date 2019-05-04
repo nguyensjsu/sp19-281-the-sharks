@@ -1,7 +1,7 @@
 ## Quality Focus
-#### This agile core value is one of the most importnat values among all. As mentioned in the "Agile Priciple: Core Values" Bible, quality focus is about remained focused on goal and outcome of the project.
+#### This agile core value is one of the most important values among all. As mentioned in the "Agile Priciple: Core Values" Bible, quality focus is about remained focused on goal and outcome of the ongoing work and curriculum.
 
-* Quality focus is important for all of the team member to think about wide possibility within relevant working field.
+* Quality focus is important for all of the team members to think about wide possibility within relevant working field.
 * This value helps individual to look out for difficulties in the depth.
 * As all the team member has various field interests, this value helps them to learn within novel field and encourages them to search more within that.
 
