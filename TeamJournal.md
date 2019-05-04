@@ -101,9 +101,11 @@ Front end technology - Node.JS and React.JS
 Mongodb with 2 replicas are used for implementation. According to CAP theorem, MongoDB is CP database. Hence, it provides consistent data. Mongo DB is partition tolerant system, as it updates database from nwtowrk recovery and elects a new master node in that case.
 
 # Architecture Diagram
+![System Architecture](https://github.com/nguyensjsu/sp19-281-the-sharks/blob/master/Images/System%20Architecture.png)
 
 
 # Application Screenshots
+
 
 
 
