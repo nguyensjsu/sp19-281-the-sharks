@@ -17,3 +17,5 @@ Saumil Shah - Order and Cart GOAPI
 ## Agile Core Values
 
 [Saumil Shah - Openness](https://github.com/nguyensjsu/sp19-281-the-sharks/blob/master/Agile%20Core%20Values/Saumil.md)
+
+[Mitesh Kumar - Courage](https://github.com/nguyensjsu/sp19-281-the-sharks/blob/master/Agile%20Core%20Values/Mitesh_Kumar.md)
