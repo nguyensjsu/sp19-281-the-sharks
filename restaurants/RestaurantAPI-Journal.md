@@ -2,9 +2,9 @@
 
 ## Steps for development of Restaurant API and setting it up on AWS using docker
 
-## Setup mongodb sharded cluster
+## Setup mongodb cluster
 ```
-Use shareded cluster from Personal project
+Create mongodb replica set of 3 instances
 ```
 
 ## Write GO APIs for Users for - 
