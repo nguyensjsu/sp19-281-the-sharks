@@ -20,4 +20,6 @@ Saumil Shah - Order and Cart GOAPI
 
 [Mitesh Kumar - Courage](https://github.com/nguyensjsu/sp19-281-the-sharks/blob/master/Agile%20Core%20Values/Mitesh_Kumar.md)
 
-[Sarthak Sugandhi - Commitment](https://github.com/nguyensjsu/sp19-281-the-sharks/blob/master/Agile%20Core%20Values/Sarthak.md)
+## System Architecture
+
+![System Architecture](https://github.com/nguyensjsu/sp19-281-the-sharks/blob/master/Images/System%20Architecture.png)
