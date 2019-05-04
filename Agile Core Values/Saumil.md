@@ -9,13 +9,13 @@ One of the agile core values, Openness as stated in Manifesto "individuals and i
 
 ## Week 1:
 * Explained the importance of openness and transparency in the agile environment to the team.
-* A need of frequent scrum meetings of at least twice a week was brought out.
-* Project architecture and requirements were made clear.
+* Ideas were gathered and came upon an unanimous decision for the project topic.
 * Every member had a research task to understand the requirements.
 
 ## Week 2:
 * The decision of staying in touch via Messenger to give updates was made.
-* Ideas were gathered and came upon an unanimous decision for the project topic.
+* A need of frequent scrum meetings of at least twice a week was brought out.
+* Project architecture and requirements were made clear.
 * Systems to use were decided.
 
 ## Week 3: 
@@ -24,3 +24,13 @@ One of the agile core values, Openness as stated in Manifesto "individuals and i
 * Deadlines were decided.
 
 ## Week 4:
+* Discussed about assigned GOAPIs and troubles encountered.
+* Deadlines for integration were set.
+* Finishing remaining work.
+
+## Week 5:
+* Fixed all bugs.
+* Helped each other solve minor issues.
+* Finished front-end and back-end integration.
+* Documentation and Presentation.
+* Discussion about presentation and demo.
