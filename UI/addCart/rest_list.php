@@ -132,7 +132,7 @@ function callAPI($method, $url, $data) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $restaurant = $_POST['restaurant'];
 
-  $data = callAPI("POST",'http://cmpe281-327234648.us-east-1.elb.amazonaws.com/restaurant/zipcode/95113',json_encode(array('restaurant'=>$restaurant)));
+  $data = callAPI("POST",'https://cmpe281-327234648.us-east-1.elb.amazonaws.com/restaurant/zipcode/95113',json_encode(array('restaurant'=>$restaurant)));
   echo $data;
   $data = json_decode($data, true);
   echo $data['message'];

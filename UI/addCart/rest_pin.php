@@ -161,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<form action="rest_pin.php">
           <td>
             <?php
-            echo "Welcome $name";
+            //echo "Welcome $name";
             ?>
           </td>
 				<td>
